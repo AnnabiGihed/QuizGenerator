@@ -10,7 +10,7 @@ using QuizGenerator.Data.DbContexts;
 namespace QuizGenerator.Data.Migrations
 {
     [DbContext(typeof(QuestionContext))]
-    [Migration("20191019040207_InitV0")]
+    [Migration("20191019041617_InitV0")]
     partial class InitV0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -19,22 +19,24 @@ namespace QuizGenerator.Data.DbContexts
         public DbSet<QuestionCategory> QuestionsCategory { get; set; }
     }
 
-    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<QuestionContext>
-    {
-        public QuestionContext CreateDbContext(string[] args)
-        {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                      .SetBasePath(Directory.GetCurrentDirectory())
-                      .AddJsonFile("appsettings.json")
-                      .Build();
+    #region Hidden
+    //public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<QuestionContext>
+    //{
+    //    public QuestionContext CreateDbContext(string[] args)
+    //    {
+    //        IConfigurationRoot configuration = new ConfigurationBuilder()
+    //                  .SetBasePath(Directory.GetCurrentDirectory())
+    //                  .AddJsonFile("appsettings.json")
+    //                  .Build();
 
-            var builder = new DbContextOptionsBuilder<QuestionContext>();
+    //        var builder = new DbContextOptionsBuilder<QuestionContext>();
 
-            var connectionString = configuration.GetConnectionString("DatabaseConnection");
+    //        var connectionString = configuration.GetConnectionString("DatabaseConnection");
 
-            builder.UseSqlServer(connectionString);
+    //        builder.UseSqlServer(connectionString);
 
-            return new QuestionContext(builder.Options);
-        }
-    }
+    //        return new QuestionContext(builder.Options);
+    //    }
+    //}
+    #endregion
 }
