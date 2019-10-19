@@ -2,12 +2,12 @@
 using QuizManager.Entities;
 using QuizManager.Entities.Enums;
 using System.Collections.Generic;
+using QuizGenerator.Api.Models.BaseEntityModel;
 
 namespace QuizGenerator.Api.Models.QuestionModels
 {
-    public class QuestionDto
+    public class QuestionDto : BaseEntityDto
     {
-        public Guid Id { get; set; }
         public string Title { get; set; }
         public QuestionType Type { get; set; }
         public TimeSpan Duration { get; set; }
