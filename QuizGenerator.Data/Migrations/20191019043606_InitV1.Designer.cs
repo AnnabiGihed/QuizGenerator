@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuizGenerator.Data.DbContexts;
 
 namespace QuizGenerator.Data.Migrations
 {
     [DbContext(typeof(QuizGeneratorContext))]
-    partial class QuestionContextModelSnapshot : ModelSnapshot
+    [Migration("20191019043606_InitV1")]
+    partial class InitV1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

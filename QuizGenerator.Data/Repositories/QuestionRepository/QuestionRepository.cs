@@ -11,9 +11,9 @@ namespace QuizGenerator.Data.Repositories.QuestionRepository
 {
     public class QuestionRepository : IQuestionRepository, IDisposable
     {
-        private readonly QuestionContext _context;
+        private readonly QuizGeneratorContext _context;
 
-        public QuestionRepository(QuestionContext context)
+        public QuestionRepository(QuizGeneratorContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }

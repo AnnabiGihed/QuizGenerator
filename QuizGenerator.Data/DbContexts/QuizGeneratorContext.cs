@@ -7,16 +7,20 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace QuizGenerator.Data.DbContexts
 {
-    public class QuestionContext : DbContext
+    public class QuizGeneratorContext : DbContext
     {
-        public QuestionContext(DbContextOptions<QuestionContext> options)
+        public QuizGeneratorContext(DbContextOptions<QuizGeneratorContext> options)
             :base(options)
         {
         }
 
+        public DbSet<Quiz> Quizs { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<QuizCategory> QuizCategories { get; set; }
         public DbSet<QuestionCategory> QuestionsCategory { get; set; }
+
+
     }
 
     #region Hidden

@@ -33,7 +33,7 @@ namespace QuizGenerator.Api
 
             services.AddScoped<IQuestionRepository, QuestionRepository>();
 
-            services.AddDbContext<QuestionContext>(options =>
+            services.AddDbContext<QuizGeneratorContext>(options =>
             {
                 options.UseSqlServer(
                     @"Server=(localdb)\mssqllocaldb;Database=QuizGenerator;Trusted_Connection=True;");

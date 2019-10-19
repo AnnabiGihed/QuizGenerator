@@ -19,7 +19,7 @@ namespace QuizGenerator.Api
             {
                 try
                 {
-                    var context = scope.ServiceProvider.GetService<QuestionContext>();
+                    var context = scope.ServiceProvider.GetService<QuizGeneratorContext>();
                     // for demo purposes, delete the database & migrate on startup so 
                     // we can start with a clean slate
                     context.Database.EnsureDeleted();
