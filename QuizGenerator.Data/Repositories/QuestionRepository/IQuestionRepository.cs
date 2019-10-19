@@ -20,12 +20,10 @@ namespace QuizGenerator.Data.Repositories.QuestionRepository
 
 
         #region Question's Answers Data Handling
-        void AddChoosenAnswer(Guid QuestionId, Answer ChoosenAnswer);
-        void AddPossibleAnswer(Guid QuestionId, Answer PossibleAnswer);
+        void AddAnswer(Guid questionId, Answer answer);
         void DeleteAnswer(Answer answer);
         Answer GetAnswer(Guid QuestionId, Guid AnswerId);
-        IEnumerable<Answer> GetChoosenAnswers(Guid QuestionId);
-        IEnumerable<Answer> GetPossibleAnswers(Guid QuestionId);
+        IEnumerable<Answer> GetAnswers(Guid questionId);
         void UpdateAnswer(Answer answer);
         #endregion Question's Answers Data Handling
 

@@ -9,11 +9,8 @@ namespace QuizManager.Entities
     {
         [Required]
         public string Value { get; set; }
-
         [Required]
         public bool Correct { get; set; }
-
-        public AnswerType Type { get; set; }
 
         [ForeignKey("QuestionId")]
         public Guid QuestionId { get; set; }

@@ -128,32 +128,18 @@ namespace QuizGenerator.Data.Repositories.QuestionRepository
         #endregion QuestionHandling
 
         #region Question's Answwer Data Handling
-        public void AddChoosenAnswer(Guid QuestionId, Answer ChoosenAnswer)
+        public void AddAnswer(Guid questionId, Answer answer)
         {
-            if (QuestionId == Guid.Empty)
-                throw new ArgumentNullException(nameof(QuestionId));
+            if (questionId == Guid.Empty)
+                throw new ArgumentNullException(nameof(questionId));
 
-            if (ChoosenAnswer == null)
-                throw new ArgumentNullException(nameof(ChoosenAnswer));
+            if (answer == null)
+                throw new ArgumentNullException(nameof(answer));
 
-            ChoosenAnswer.QuestionId = QuestionId;
-            ChoosenAnswer.Type = AnswerType.Choosen;
-
-            _context.Answers.Add(ChoosenAnswer);
+            answer.QuestionId = questionId;
+            _context.Answers.Add(answer);
         }
-        public void AddPossibleAnswer(Guid QuestionId, Answer PossibleAnswer)
-        {
-            if (QuestionId == Guid.Empty)
-                throw new ArgumentNullException(nameof(QuestionId));
 
-            if (PossibleAnswer == null)
-                throw new ArgumentNullException(nameof(PossibleAnswer));
-
-            PossibleAnswer.QuestionId = QuestionId;
-            PossibleAnswer.Type = AnswerType.Possible;
-
-            _context.Answers.Add(PossibleAnswer);
-        }
         public void DeleteAnswer(Answer answer)
         {
             _context.Answers.Remove(answer);
@@ -173,19 +159,12 @@ namespace QuizGenerator.Data.Repositories.QuestionRepository
             return _context.Answers
               .Where(c => c.QuestionId == QuestionId && c.Id == AnswerId).FirstOrDefault();
         }
-        public IEnumerable<Answer> GetChoosenAnswers(Guid QuestionId)
+        public IEnumerable<Answer> GetAnswers(Guid questionId)
         {
-            if (QuestionId == Guid.Empty)
-                throw new ArgumentNullException(nameof(QuestionId));
+            if (questionId == Guid.Empty)
+                throw new ArgumentNullException(nameof(questionId));
 
-            return _context.Answers.Where(c => (c.QuestionId == QuestionId) && (c.Type == AnswerType.Choosen)).ToList();
-        }
-        public IEnumerable<Answer> GetPossibleAnswers(Guid QuestionId)
-        {
-            if (QuestionId == Guid.Empty)
-                throw new ArgumentNullException(nameof(QuestionId));
-
-            return _context.Answers.Where(c => (c.QuestionId == QuestionId) && (c.Type == AnswerType.Possible)).ToList();
+            return _context.Answers.Where(c => (c.QuestionId == questionId)).ToList();
         }
         public void UpdateAnswer(Answer answer)
         {

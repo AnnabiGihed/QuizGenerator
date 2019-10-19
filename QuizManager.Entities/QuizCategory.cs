@@ -7,7 +7,5 @@ namespace QuizManager.Entities
     {
         [MaxLength(50)]
         public string Title { get; set; }
-        public ICollection<Quiz> Quizs { get; set; }
-            = new List<Quiz>();
     }
 }
