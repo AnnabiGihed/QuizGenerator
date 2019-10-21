@@ -9,6 +9,7 @@ using QuizGenerator.Data.DbContexts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using QuizGenerator.Data.Repositories.QuestionRepository;
+using QuizGenerator.Data.Repositories.AnswerRepository;
 
 namespace QuizGenerator.Api
 {
@@ -32,6 +33,7 @@ namespace QuizGenerator.Api
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<IAnswerRepository, AnswerRepository>();
 
             services.AddDbContext<QuizGeneratorContext>(options =>
             {

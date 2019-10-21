@@ -18,8 +18,6 @@ namespace QuizGenerator.Data.Repositories.QuestionRepository
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-
-        #region Question Data Handling
         public void AddQuestion(Question question)
         {
             if (question == null)
@@ -63,7 +61,6 @@ namespace QuizGenerator.Data.Repositories.QuestionRepository
             _context.Questions.Remove(question);
         }
 
-        #region Question Data Retrivers functions
         public Question GetQuestion(Guid questionId)
         {
             if (questionId == Guid.Empty)
@@ -114,7 +111,6 @@ namespace QuizGenerator.Data.Repositories.QuestionRepository
             }
             return collection.Include(Qs => Qs.Category).Include(Qs => Qs.Answers).ToList();
         }
-        #endregion Question Data Retrivers functions
 
         public void UpdateQuestion(Question question)
         {
@@ -125,54 +121,7 @@ namespace QuizGenerator.Data.Repositories.QuestionRepository
         {
             return (_context.SaveChanges() >= 0);
         }
-        #endregion QuestionHandling
 
-        #region Question's Answwer Data Handling
-        public void AddAnswer(Guid questionId, Answer answer)
-        {
-            if (questionId == Guid.Empty)
-                throw new ArgumentNullException(nameof(questionId));
-
-            if (answer == null)
-                throw new ArgumentNullException(nameof(answer));
-
-            answer.QuestionId = questionId;
-            _context.Answers.Add(answer);
-        }
-
-        public void DeleteAnswer(Answer answer)
-        {
-            _context.Answers.Remove(answer);
-        }
-        public Answer GetAnswer(Guid QuestionId, Guid AnswerId)
-        {
-            if (QuestionId == Guid.Empty)
-            {
-                throw new ArgumentNullException(nameof(QuestionId));
-            }
-
-            if (AnswerId == Guid.Empty)
-            {
-                throw new ArgumentNullException(nameof(AnswerId));
-            }
-
-            return _context.Answers
-              .Where(c => c.QuestionId == QuestionId && c.Id == AnswerId).FirstOrDefault();
-        }
-        public IEnumerable<Answer> GetAnswers(Guid questionId)
-        {
-            if (questionId == Guid.Empty)
-                throw new ArgumentNullException(nameof(questionId));
-
-            return _context.Answers.Where(c => (c.QuestionId == questionId)).ToList();
-        }
-        public void UpdateAnswer(Answer answer)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion Question's Answwer Data Handling
-
-        #region Disposal
         public void Dispose()
         {
             Dispose(true);
@@ -185,6 +134,5 @@ namespace QuizGenerator.Data.Repositories.QuestionRepository
                 // dispose resources when needed
             }
         }
-        #endregion Disposal
     }
 }

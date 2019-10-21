@@ -1,13 +1,15 @@
 ﻿using System;
 using AutoMapper;
+using System.Linq;
 using QuizManager.Entities;
 using Microsoft.AspNetCore.Mvc;
+using QuizGenerator.Api.Helpers;
 using System.Collections.Generic;
 using QuizGenerator.Data.ResourceParameters;
 using QuizGenerator.Api.Models.QuestionModels;
 using QuizGenerator.Data.Repositories.QuestionRepository;
 
-namespace QuizGenerator.Api.Controllers
+namespace QuizGenerator.Api.Controllers.QuestionControllers
 {
     [ApiController]
     [Route("api/questions")]

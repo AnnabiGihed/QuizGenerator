@@ -12,6 +12,5 @@ namespace QuizGenerator.Api.Models.AnswerModels
     {
         public string Value { get; set; }
         public bool Correct { get; set; }
-        public Question Question { get; set; }
     }
 }
